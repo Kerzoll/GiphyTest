@@ -18,7 +18,7 @@ object AppObject {
     @Singleton
     @Provides
     fun provideRetrofit(gson: Gson) : Retrofit = Retrofit.Builder()
-        .baseUrl("http://kerzoll.org.ua/osapi/v1/")
+        .baseUrl("https://api.giphy.com/v1/")
         .addConverterFactory(ScalarsConverterFactory.create())
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()

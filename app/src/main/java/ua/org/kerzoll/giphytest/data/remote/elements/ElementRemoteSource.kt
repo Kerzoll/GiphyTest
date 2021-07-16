@@ -5,6 +5,9 @@ import javax.inject.Inject
 class ElementRemoteSource @Inject constructor(
     private val elementService: ElementService
 ) : BaseDataSource() {
-    suspend fun getSearch(apiKey: String, query: String, limit: Int, offset: Int) =
-        getResult { elementService.search(apiKey, query, limit, offset, "g", "en") }
+
+    private val apiKey = "YGHnKKBGSydS6nSt6WAoUcICWwmgCfvL";
+
+    suspend fun getSearch(query: String, limit: Int, offset: Int) =
+        getResult { elementService.searchGif(apiKey, query, limit, offset, "g", "en") }
 }

@@ -7,13 +7,13 @@ import ua.org.kerzoll.giphytest.data.entites.elements.ElementEntityRemote
 interface ElementService {
 
     @GET("gifs/search")
-    fun search(
+    fun searchGif(
         @Query("api_key") apiKey: String,
         @Query("q") query: String,
         @Query("limit") limit: Int,
         @Query("offset") offset: Int,
         @Query("rating") rating: String,
         @Query("lang") lang: String,
-    ): Call<List<ElementEntityRemote>>
+    ): Call<ElementEntityRemote>
 
 }
