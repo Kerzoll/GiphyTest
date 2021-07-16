@@ -38,7 +38,7 @@ class GiphyActivity : AppCompatActivity() {
     private val elementViewModel: ElementViewModel by viewModels()
 
     private lateinit var elementsRv: RecyclerView
-    lateinit var layoutManager : LinearLayoutManager
+    lateinit var layoutManager: LinearLayoutManager
     private var pastVisiblesItems: Int = 0
     private var visibleItemCount: Int = 0
     private var totalItemCount: Int = 0
@@ -142,12 +142,14 @@ class GiphyActivity : AppCompatActivity() {
                 startActivity(Intent("ua.org.kerzoll.giphytest.ui.activity.CarouselActivity"))
             }
 
-            Glide.with(this@GiphyActivity)
-                .asGif()
-                .load("https://media1.giphy.com/media/" + item.id + "/giphy.gif")
-                .diskCacheStrategy(DiskCacheStrategy.DATA)
-                .into(viewBinding.imageView)
+            item.id?.let {
+                elementViewModel.addId(item.id)
+                Glide.with(this@GiphyActivity)
+                    .asGif()
+                    .load("https://media1.giphy.com/media/" + item.id + "/giphy.gif")
+                    .diskCacheStrategy(DiskCacheStrategy.DATA)
+                    .into(viewBinding.imageView)
+            }
         }
-
     }
 }

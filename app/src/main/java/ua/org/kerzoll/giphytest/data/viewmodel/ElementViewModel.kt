@@ -15,6 +15,7 @@ class ElementViewModel @ViewModelInject constructor(
     companion object {
         const val TAG = "ElementViewModel"
         var currentId: String? = null
+        var currentIds: MutableList<String> = mutableListOf()
     }
 
     var elementsForActual: LiveData<Resource<ElementEntityRemote>> = MutableLiveData<Resource<ElementEntityRemote>>()
@@ -29,5 +30,28 @@ class ElementViewModel @ViewModelInject constructor(
 
     fun getCurrentId(): String? {
         return currentId
+    }
+
+    fun addId(id: String) {
+        currentIds.add(id)
+    }
+
+    fun clearIds() {
+        currentIds.clear()
+    }
+
+    fun getIds(): MutableList<String> {
+        return currentIds
+    }
+
+    fun getKeyById(id: String): Int? {
+        var i = 0
+        currentIds.forEach {
+            if(id == it) {
+                return i
+            }
+            i++
+        }
+        return null
     }
 }
