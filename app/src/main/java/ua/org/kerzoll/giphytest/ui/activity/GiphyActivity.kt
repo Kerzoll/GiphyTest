@@ -1,5 +1,6 @@
 package ua.org.kerzoll.giphytest.ui.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -56,7 +57,6 @@ class GiphyActivity : AppCompatActivity() {
         layoutManager = LinearLayoutManager(this)
         elementsRv = bindingElement.elementRv
         elementsRv.layoutManager = layoutManager
-
 
         setupGroupAdapter()
 
@@ -134,6 +134,13 @@ class GiphyActivity : AppCompatActivity() {
         }
 
         override fun bind(viewBinding: ItemGiphyBinding, position: Int) {
+
+            viewBinding.imageView.setOnClickListener {
+                item.id?.let {
+                    elementViewModel.setCurrentId(it)
+                }
+                startActivity(Intent("ua.org.kerzoll.giphytest.ui.activity.CarouselActivity"))
+            }
 
             Glide.with(this@GiphyActivity)
                 .asGif()

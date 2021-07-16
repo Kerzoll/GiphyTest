@@ -12,11 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GiphyTest">
-        <activity android:name=".ui.activity.ItemGiphy"></activity>
+        <activity android:name=".ui.activity.CarouselActivity">
+            <intent-filter>
+                <action android:name="ua.org.kerzoll.giphytest.ui.activity.CarouselActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.ItemGiphy" />
         <activity android:name=".ui.activity.GiphyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

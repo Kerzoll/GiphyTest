@@ -14,6 +14,7 @@ class ElementViewModel @ViewModelInject constructor(
 
     companion object {
         const val TAG = "ElementViewModel"
+        var currentId: String? = null
     }
 
     var elementsForActual: LiveData<Resource<ElementEntityRemote>> = MutableLiveData<Resource<ElementEntityRemote>>()
@@ -22,4 +23,11 @@ class ElementViewModel @ViewModelInject constructor(
         elementsForActual = repository.searchGif(query, limit, offset)
     }
 
+    fun setCurrentId(id: String) {
+        currentId = id
+    }
+
+    fun getCurrentId(): String? {
+        return currentId
+    }
 }
